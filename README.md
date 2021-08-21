@@ -14,6 +14,10 @@ ultra-wombat-hax-tool
 ---------------------
 This is a simple program that reads and pretty-prints data from the djmemc memory controller registers.  Useful for figuring out how the ROM is configuring the machine.
 
+rom-hacking
+-----------
+A tiny, lazy pile of hacks to modify and build a Wombat ROM.  Good enough to fudge djMEMC register values!
+
 external docs
 -------------
 Reference copies of various useful documents and notes.
