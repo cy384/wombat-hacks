@@ -1,3 +1,4 @@
+#!/bin/sh
 ROM_PATH="../stock roms/F1ACAD13 Quadra 650.rom"
 
 ~/src/Retro68-build/toolchain/bin/m68k-apple-macos-as build/out.S -o build/out.elf
