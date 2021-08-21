@@ -22,4 +22,5 @@ now you'll have build/out.rom, which you can hopefully use to boot a real Wombat
 things done so far to annotated-rom.S
 -------------------------------------
 * put the djMEMC config values with comments, based on Universal.a from the SuperMario source
+* disassembled the djmemc memory sizing code, again based on the SuperMario source
 
