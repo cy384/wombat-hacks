@@ -1,0 +1,90 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>WOMBAT Tidbits</title>
+<link rev="January 3, 1998" href="mailto:schrier@socs.berkeley.edu (Marc Schrier)">
+</head>
+<body bgcolor="#FFFFFF">
+<a name="top"><h1>WOMBAT Tidbits</h1></a>
+<hr>
+WOMBAT is the name for the motherboard used in the Centris 650, Quadra 
+650, and Quadra 800 computers.  The presence or absence of some surface 
+mount resistors on the bottom of the board, and an LED assembly, change 
+the computers identity.  Depending on these variables, the computer 
+identifies itself as a C650, Q650, Q800, or one of two new, unreleased 
+and previously unobserved machines.  The conversion between these five 
+machines is reversible and independent of processor speed.
+<p>
+The table below tabulates the variables I have studied.  Surface mount 
+resistors were either absent from the pads for R151 and R152, or present
+ on just R151 or R152.  The Quadra 800 uses a 5 pin connector at J25 to 
+supply power to a LED power indicator.  The Centris and Quadra 650 use 
+an LED at D51 for this purpose (The Quadra 800 also has this diode, but 
+the light it emits is not visible when the motherboard is situated 
+inside the case).  The connector that grabs pins 1 and 5 from J25 on the
+ Quadra 800 for the LED also serves a second purpose.  It has a jumper 
+wire between pins 2 and 3.  This jumper wire identifies the computer as 
+one with an upright board, and hence a Q800.  The WOMBAT board can also 
+be fitted with an Apple PPC PDS card, and that accounts for the second 
+half of the table.  The numbers listed in the table are mach gestalts; 
+they are numbers that identify the machine type.
+</p><p>
+<table cellspacing="3" cellpadding="2" border="3">
+<tbody><tr><th colspan="2" align="LEFT">WOMBAT mach Gestalts</th>
+<th>R151 and R152 empty</th>
+<th>R151 (301) (300 Ohms)</th>
+<th>R152 (122) (1.2k Ohms)</th>
+</tr><tr>
+<th rowspan="2">68040</th>
+<th>No Jumper (LED)</th>
+<td>51 (new)</td>
+<td>30 (C650)</td>
+<td>36 (Q650)</td>
+</tr>
+<tr>
+<th>Jumper (LED)</th>
+<td>59 (new)</td>
+<td>30 (C650)</td>
+<td>35 (Q800)</td>
+</tr>
+<tr><th rowspan="2">PPC PDS</th>
+<th>No Jumper (LED)</th>
+<td>123 (PowerMac 800)</td>
+<td>120 (PowerMac C650)</td>
+<td>122 (PowerMac Q650)</td>
+</tr>
+<tr>
+<th>Jumper (LED)</th>
+<td>nope</td>
+<td>120 (PowerMac C650)</td>
+<td>123 (PowerMac 800)</td>
+</tr>
+</tbody></table>
+</p><hr>
+The serial ports fail above 30MHz under the conditions for gestalt 30, 
+but they are fine at 40MHz under the conditions for gestalts 35, 36, 51,
+ 59, 120, 122, and 123.<br>
+The modification for converting a Centris 650 to a Quadra 650 is outlined in Marlin Prowell's  (<a href="mailto:mbp@janus.com">mbp@janus.com</a>) <a href="http://www.applefool.com/clockchipping/c650.html">C650 Serial Port Modification file</a>.
+<p>
+The current (released) system software for 68040 machines, 7.5.1, has 
+the proper resources for mach gestalt 59, but it does not have them for 
+mach gestalt 51.  If for some reason you want to get a WOMBAT board up 
+and running with mach gestalt 51, drop me a line, and I'll send you a 
+patch.
+</p><p>
+</p><p>
+When you run these machines around 40/80MHz, video problems seem to be 
+the limiting factor.  If you have a PPC card you can pull out the 68040 
+if you never switch back to it, and you will be able to squeeze out a 
+few extra MHz.  It has also been noted that if you use a video card you 
+can also squeeze out a few additional MHz.  One clock chipper dropped a 
+Supermac SpectrumV Series 5 card into his C650/PPC and got it up to 
+85MHz.  His processor was not stable at 86MHz.
+</p><p>
+</p><p>
+</p><ul><ul><ul><ul><ul><ul>
+Marc Schrier<br>
+(<a href="mailto:schrier@garnet.berkeley.edu">schrier@garnet.berkeley.edu</a>)<br>
+</ul></ul></ul></ul></ul></ul>
+
+
+</body></html>

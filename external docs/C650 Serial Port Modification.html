@@ -1,0 +1,164 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>C650 Serial Port Modification</title>
+<link rev="March 17 2002" href="mailto:schrier@mac.com (Marc Schrier)">
+</head>
+<body bgcolor="#FFFFFF">
+<a name="top"><h1>C650 Serial Port Modification</h1></a>
+<hr>
+From: <a href="mailto:mbp@januscom.com">mbp@januscom.com</a> (Marlin Prowell)<br>
+Newsgroups: comp.sys.mac.hardware<br>
+Subject: Centris 650 at 40 MHz ... *with* serial ports<br>
+Date: Fri, 01 Apr 1994 07:30:32 -0800<br>
+<hr>
+I have a Centris 650.  I have followed with great interest the articles that Marc Schrier<br>
+(<a href="mailto:schrier@mac.com">schrier@mac.com</a>) has written about
+ clock chipping of recent Macs, but was disappointed that Centris 650's 
+could only be accelerated from 25 MHz to about 28 MHz before the serial 
+ports would fail.  It didn't seem worth the effort.
+<p>
+In September, 1993, James McPhail (<a href="mailto:jmacphai@cue.bc.ca">jmacphai@cue.bc.ca</a>)
+ wrote that he had a Centris 650 running at 40 MHz.  He fixed the serial
+ port problem by adding to the motherboard a PAL that he had programmed.
+  It is an exotic solution, and not meant for the faint-hearted.
+</p><p>
+But it was James that also suggested another avenue.  He said that 
+someone should compare the motherboards of a Quadra 800 with a Centris 
+650, and see if there were any differences around the IOSB (the serial 
+I/O chip).
+</p><p>
+This is what I have done.  I first checked the ROM contents and found 
+that they are identical.  The motherboards for the Q800 and C650 are 
+identical, and have *almost* identical parts installed on them. On the 
+underside of the board, underneath the IOSB chip, there are two 
+differences.  R151 is installed on a C650, and is missing on a Q800.  
+R152 is missing on the C650, and is installed on the Q800.
+</p><p>
+With this information, I ordered the parts for a clock chipping kit, 
+along with a resistor to install as R152.  I first installed different 
+oscillators without changing the motherboard.  The fastest crystal I 
+ordered was 20 MHz (to run the computer at 40 MHz), and the machine ran 
+at 40 MHz.  Of course, the serial ports did not work.
+</p><p>
+I then changed the resistors on the motherboard (details below), and 
+tried again.  Now *everything* works at 40 MHz.  I have used the modem 
+port, and printed from the printer port.  I have tried both LocalTalk 
+and the Ethernet port, and all work fine.  The floppy drive also works.
+</p><p>
+I ran MacCheck 1.0.5 on the machine.  When I tried MacCheck before 
+modifying the motherboard, it hung when trying to access the modem port.
+  After changing the motherboard, it reported that there were no 
+problems.  It also reported that I had a *Quadra* 650 running at 40 MHz.
+</p><p>
+That was a surprise.  I checked the "About This Macintosh" box in the 
+Finder, and it also reported that I had a Quadra 650.  This is important
+ to know.  If you make this modification, you 
+*must* install System Enabler 040 Version 1.1 first.  This is the 
+version meant for the Quadra 610 and 650, and is backwards compatible 
+with the Centris 650. If you do not, your machine will refuse to boot, 
+saying that you need to install newer software.  You must install 
+version 1.1 on every bootable disk, including all your emergency floppy 
+disks, and your Disk Tools floppy.
+</p><p>
+It also seems a little unusual that modifying a Centris 650 motherboard 
+so that it is identical to a Quadra 800 board instead turns it into a 
+Quadra 650 motherboard.  Only Apple knows what is going on.  A Quadra 
+650 requires 80 ns DRAM, whereas a Quadra 800 requires 60 ns DRAM.  
+There must be some difference in the on-board memory system that the ROM
+ can detect.
+</p><p>
+I didn't expect to be able to accelerate the machine up to 40 MHz.  I 
+expected that memory access time would limit the modification.  I can 
+only guess that the memory system has it's own timing circuit that is 
+not derived from the system clock, so speeding up the processor does not
+ speed up memory access requirements.
+</p><p>
+Making the modification
+</p><p>
+I have done a little hardware work, but I am no expert at it (I'm a 
+software guy).  I'll outline the procedure that I followed, and you can 
+modify it if you have better tools than I do.
+</p><p>
+Warning:  you are making modifications that void your warranty. Also, I 
+cannot promise that these changes will be successful for you.  You could
+ ruin your motherboard attempting these changes.  The resistors are 
+incredibly small, and changing them requires a delicate touch.  If you 
+have any doubt about your soldering and electronics skills, get someone 
+else to make the changes.
+
+You will need one 1.2K 1/10 watt surface mount resistor (type 0805) to 
+install as R152.  I ordered mine from DigiKey when I ordered the rest of
+ the clock chipping kit.  The DigiKey part number is P1.2KABK, which is a
+ package of 200 resistors for $6.01.  This is the minimum number of 
+resistors you can buy from them.  The Panasonic part number for the 
+resistor is ERJ-6GEYJ122.  The resistor should have the number 122 on 
+the top.  You'll need a magnifying glass to read it, however.
+</p><p>
+To make the modification, I used a good quality 25 watt soldering iron 
+with a very small tip, some desoldering braid, and a hemostat (medical 
+locking forceps) with a small tip.  You will also need a magnifying 
+glass to check your work.
+</p><p>
+Removing R151
+</p><p>
+This is the most difficult part of the modification.  Find R151 on the 
+underside of the board.  Each part, including R151, has been glued to 
+the motherboard.  R151 also has two circuit board traces running under 
+the resistor, so prying underneath the resistor to loosen the glue is 
+not a good idea.
+
+I first removed excess solder from the ends of the resistor with the 
+desoldering braid.  Be careful not to overheat the motherboard as you 
+can damage the inner layers of the board.  I then clamped the hemostat 
+over the resistor, and, while applying heat to the ends, gently twisted 
+the resistor to remove it.  (Those of you with proper tools, please stop
+ laughing.  I did what I could with what I had.)
+</p><p>
+After I made the modification, James McPhail wrote:
+</p><p>
+</p><blockquote>
+I remove SMT resistors with two soldering irons, one in each hand.  Heat
+ up both ends and flip it aside when it is loose. I don't find the glue 
+is much of a problem.
+</blockquote>
+<p>
+Adding R152
+</p><p>
+Put the 1.2K resistor in place.  Hold it down with a tiny flat blade 
+screwdriver while you solder the ends, otherwise the resistor will stick
+ to the soldering iron.
+</p><p>
+Congratulations! You now have a Quadra 650 (running at 25 MHz).  Make 
+the clock chipping modifications that Marc Schrier has described, and 
+you, too, can have a 40 MHz machine.
+</p><p>
+In his September 93 posting, James McPhail wrote:
+</p><p>
+</p><blockquote>
+I measured the temperature of the CPU heatsink and found the following (closed box, no NuBus cards).<br>
+Ambient 23   degrees C<br>
+25 MHz  42.0 degrees C<br>
+40 MHz  47.5 degrees C<br>
+So if you keep the box closed, it is clear that no additional CPU cooling is necessary.
+</blockquote>
+<p>
+He also mentioned to me recently that his Centris 650 is still running 
+fine at 40 MHz.  Good luck to all who make this modification!
+</p><hr>
+| Marlin Prowell | There is a very thin line between ignorance and arrogance |<br>
+| <a href="mailto:mbp@januscom.com">mbp@januscom.com</a>  | and I have totally obliterated that line.  -- Dr. Science<br>
+<p>
+</p><hr>
+There are a few more bits of information that have come out since Marlin posted this file:
+<ul>
+<li>This modification only seems to work well if you have the full 68040
+ processor.  If you have a 68LC040 you might want to think about getting
+ one with the mathcoprocessor before accelerating to 40MHz.
+</li><li>SIMMs should be added in pairs of two.  If you already have one
+ you should purchase another SIMM of the same size before accelerating 
+to 40MHz.
+</li><li><a href="http://www.io.com/~oe/Resistance.html">Join the Resistance!</a> by sending a Self Addressed Stamped Envelope to <a href="http://www.io.com/~oe">Output Enablers</a>, and they will send you a 1.2k Ohm (122) surface mount resistor for free.
+</li></ul>
+
+
+</body></html>

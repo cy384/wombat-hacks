@@ -7,9 +7,16 @@ Main project goals:
 * detecting and configuring 64MB and 128MB RAM SIMMs
 
 Current status:
-* Overclocks to 45 MHz have been achieved via the well-known methods
-* bbraun has successfully experimented with allowing larger SIMMs via a custom ROM with hardcoded large-SIMM bits
-* I (cy384) have made a ROM based on the Q650 ROM which always configures the djMEMC for 40MHz, whether or not this allows higher overclocks is unknown, testing is pending
+* Overclock to 50MHz (but without functional serial and network)
+* Maximum RAM up to 8MB + 3x 128MB, with some limits and issues
+
+To squeeze everything out of these machines, you will need to:
+* change the configuration resistors on the back of the mobo
+* swap in a nicer 68040 chip, the later the better
+* apply a faster clock (solder on a faster oscillator or get a MacClip)
+* solder in a ROM socket (part number 650473-5)
+* get a programmable ROM and burn one of my (cy384's) modified ROM images to it
+* probably add a better heatsink, maybe with a fan, to the CPU
 
 terminology and machines
 ------------------------
@@ -42,7 +49,7 @@ This is a simple program that reads and pretty-prints data from the djmemc memor
 
 rom-hacking
 -----------
-A tiny, lazy pile of hacks to modify and build a Wombat ROM.  Good enough to fudge djMEMC register values!
+A tiny, lazy pile of hacks to modify and build a Wombat ROM.  There are a few partially disassembled ROMs, with changes to allow overclocking and RAM increases.
 
 external docs
 -------------
