@@ -43,6 +43,10 @@ From "Universal.a", some of the supported machines by the final 68k ROM (post-da
 
 Based on jumper and resistor placement, a Wombat can report being a 30, 35, 36, 51, or 59.  Note that early versions of Mac OS 7 don't support all of these!  I believe 7.5.3 does.
 
+oscillator-socket
+-----------------
+Pictures describing how I added a socket to my Wombat board, for easy oscillator swapping.  Takes standard 'full size' DIP14 5V oscillators.
+
 ultra-wombat-hax-tool
 ---------------------
 This is a simple program that reads and pretty-prints data from the djmemc memory controller registers.  Useful for figuring out how the ROM is configuring the machine.
