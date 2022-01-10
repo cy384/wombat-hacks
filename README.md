@@ -2,7 +2,7 @@ wombat-hacks
 ============
 This is a repository for information and code to push the capabilities of the codename "Wombat" machines (the Centris 650, Quadra 650, and Quadra 800) as far as possible.
 
-[wombat.png](wombat.png)
+![wombat.png](wombat.png)
 
 Main project goals:
 * stable and functional overclock beyond 40 MHz
