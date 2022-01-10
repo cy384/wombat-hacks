@@ -2,12 +2,14 @@ wombat-hacks
 ============
 This is a repository for information and code to push the capabilities of the codename "Wombat" machines (the Centris 650, Quadra 650, and Quadra 800) as far as possible.
 
+[wombat.png](wombat.png)
+
 Main project goals:
 * stable and functional overclock beyond 40 MHz
 * detecting and configuring 64MB and 128MB RAM SIMMs
 
 Current status:
-* Overclock to 50MHz (but without functional serial and network)
+* Overclock to 50MHz (but without functional serial and network, and eventual video glitches)
 * Maximum RAM up to 8MB + 3x 128MB, with some limits and issues
 
 To squeeze everything out of these machines, you will need to:
